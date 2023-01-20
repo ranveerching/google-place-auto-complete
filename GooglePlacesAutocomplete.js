@@ -566,6 +566,10 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
 
     if (onChangeText) {
       onChangeText(text);
+    }    
+
+    if(text===''){
+      props.clearedSearchInput()
     }
   };
 
@@ -689,12 +693,16 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
     if (e && isNewFocusInAutocompleteResultList(e)) return;
 
     if (!props.keepResultsAfterBlur) {
-      setListViewDisplayed(false);
+      setListViewDisplayed(false);      
     }
     inputRef?.current?.blur();
+    props.focused();
   };
 
-  const _onFocus = () => setListViewDisplayed(true);
+  const _onFocus = () => {
+    props.focused();
+    setListViewDisplayed(true);
+  }
 
   const _renderPoweredLogo = () => {
     if (!_shouldShowPoweredLogo()) {
@@ -904,6 +912,8 @@ GooglePlacesAutocomplete.propTypes = {
   textInputHide: PropTypes.bool,
   textInputProps: PropTypes.object,
   timeout: PropTypes.number,
+  focused:PropTypes.func,
+  clearedSearchInput:PropTypes.func
 };
 
 GooglePlacesAutocomplete.defaultProps = {
