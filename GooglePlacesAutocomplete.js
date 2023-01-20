@@ -947,6 +947,8 @@ GooglePlacesAutocomplete.defaultProps = {
   textInputHide: false,
   textInputProps: {},
   timeout: 20000,
+  focused: () => {},
+  clearedSearchInput: () => {},
 };
 
 export default { GooglePlacesAutocomplete };
