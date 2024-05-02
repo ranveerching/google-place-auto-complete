@@ -426,9 +426,13 @@ interface GooglePlacesAutocompleteProps {
   textInputHide?: boolean;
   /** text input props */
   textInputProps?: TextInputProps | Object;
+  textInputPropsForLabel?: TextInputProps | Object;
   timeout?: number;
   focused?:()=> void;
   clearedSearchInput?:()=> void;
+  floatingLabelText?: (text: string) => string;
+  floatingLabelTextStyle?: Partial<Styles> | object;
+  floatingPointContainer?: Partial<Styles> | object;
 }
 
 export type GooglePlacesAutocompleteRef = {
