@@ -823,7 +823,7 @@ export const GooglePlacesAutocomplete = forwardRef((props, ref) => {
             props.suppressDefaultStyles ? {} : defaultStyles.textInputContainer,
             props.styles.textInputContainer,
           ]}
-        >
+        >{props.floatingLabelText&&<View style={props.floatingPointContainer}><Text style={props.floatingLabelTextStyle}>{props.floatingLabelText}</Text></View>}
           {_renderLeftButton()}
           <TextInputComp
             ref={inputRef}
@@ -913,7 +913,10 @@ GooglePlacesAutocomplete.propTypes = {
   textInputProps: PropTypes.object,
   timeout: PropTypes.number,
   focused:PropTypes.func,
-  clearedSearchInput:PropTypes.func
+  clearedSearchInput:PropTypes.func,
+  floatingLabelText:PropTypes.string,
+  floatingLabelTextStyle:PropTypes.object,
+  floatingPointContainer:PropTypes.object
 };
 
 GooglePlacesAutocomplete.defaultProps = {
@@ -959,6 +962,7 @@ GooglePlacesAutocomplete.defaultProps = {
   timeout: 20000,
   focused: () => {},
   clearedSearchInput: () => {},
+  floatingLabelText:null
 };
 
 export default { GooglePlacesAutocomplete };
